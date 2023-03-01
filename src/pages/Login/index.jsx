@@ -25,14 +25,21 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await post("users/login", values);
+    const data = await post("auth/login", values);
 
-    if (data.ok) {
-      authLogin(data.data); // Le envio al usuario authenticado al AuthContext.
+    var token = JSON.stringify(data)
+
+
+    if (data && !data.error) {
+      localStorage.setItem('user',token);
+      authLogin(data); // Le envio al usuario authenticado al AuthContext.
+
     } else {
+
+      authLogin()
       Swal.fire({
         icon: "error",
-        text: data.message,
+        text: data.error,
       });
     }
   };

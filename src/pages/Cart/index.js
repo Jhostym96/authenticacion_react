@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import { Box, Button, Divider, Paper, Typography } from "@mui/material";
-import { GridActions, GridProducts, ListProducts } from "../../components";
-import { post } from "../../services";
+import {  ListProducts } from "../../components";
+// import { post } from "../../services";
 
 function Cart() {
 	const { user } = useContext(AuthContext);
@@ -24,7 +24,7 @@ function Cart() {
 			order_detail: orderDetail,
 		};
 		console.log(order);
-		const response = await post("orders/add", order);
+		// const response = await post("orders/add", order);
 	}
 
 	useEffect(() => {
